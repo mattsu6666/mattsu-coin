@@ -4,6 +4,7 @@
 - ChainlinkのAPIも使ってみた
 - 下記を参考にした
   - https://docs.openzeppelin.com/contracts/3.x/erc20
+  - https://docs.chain.link/docs/using-chainlink-reference-contracts
   
 ## チュートリアル
 ### truffle develop環境
