@@ -64,3 +64,6 @@ truffle(kovan)> b.buyLatestEthUsd().then(res => console.log(res.logs[1].event, r
 BuyEthUsd 39217000000
 undefined
 ```
+
+## 今後
+OpenZeppelinをベースに作ると、あまりにも実装することがなさすぎるので、依存せずに開発してみたい
