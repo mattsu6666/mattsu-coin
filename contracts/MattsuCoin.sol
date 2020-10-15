@@ -7,11 +7,13 @@ import "./PriceConsumerLib.sol";
 contract MattsuCoin is ERC20, AccessControl {
 
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
+    address supplier;
 
     constructor(uint256 initialSupply, address admin) public ERC20("Mattsu", "MAT") {
         _setupDecimals(3);
         _mint(msg.sender, initialSupply);
         _setupRole(ADMIN_ROLE, admin);
+        supplier = admin;
     }
 
     function mint(address to, uint256 amount) public {
@@ -24,7 +26,11 @@ contract MattsuCoin is ERC20, AccessControl {
         _burn(to, amount);
     }
 
-    function getEthUsd() public view returns (int) {
-        return PriceConsumerLib.getEthUsd();
+    event BuyEthUsd(address indexed buyer, int ethUsd);
+
+    function buyLatestEthUsd() public {
+        // TODO: トランザクションが失敗すると、transferもロールバックされるようだが、どういう仕組み?
+        _transfer(msg.sender, supplier, 100);
+        emit BuyEthUsd(msg.sender, PriceConsumerLib.getEthUsd());
     }
 }

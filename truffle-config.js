@@ -18,11 +18,12 @@
  *
  */
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
+require('dotenv').config()
 
 module.exports = {
   /**
@@ -72,6 +73,17 @@ module.exports = {
     // network_id: 2111,   // This network is yours, in the cloud.
     // production: true    // Treats this network as if it was a public net. (default: false)
     // }
+    kovan: {
+      provider: function() {
+        return new HDWalletProvider(
+            process.env.MNENOMIC,
+            "https://kovan.infura.io/v3/" + process.env.PROJECT_ID
+        );
+      },
+      network_id: 42,
+      gas: 5000000,
+      gasPrice: 1000000000
+    }
   },
 
   // Set default mocha options here, use special reporters etc.
