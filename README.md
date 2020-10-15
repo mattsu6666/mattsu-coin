@@ -62,6 +62,8 @@ truffle(kovan)>  migrate
 - オラクルを使ったトランザクション
   - BuyEthUsdを捕捉して、ETH/USDのレートを得られた (得られた値の単位は謎...1セント辺りのgwei??)
 ```
+truffle(kovan)> let b = await MattsuCoin.deployed()
+...
 truffle(kovan)> b.buyLatestEthUsd().then(res => console.log(res.logs[1].event, res.logs[1].args[1].toString(10)))
 BuyEthUsd 39217000000
 undefined
