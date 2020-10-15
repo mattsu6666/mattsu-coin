@@ -1,6 +1,7 @@
 # mattsu-coin
 - トークンの勉強用。実用性は一切無し
 - ERC-20準拠のトークンをOpenZeppelinベースで実装
+- ChainlinkのAPIも使ってみた
 - 下記を参考にした
   - https://docs.openzeppelin.com/contracts/3.x/erc20
   
