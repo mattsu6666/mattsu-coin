@@ -6,6 +6,8 @@
   
 ## チュートリアル
 ### truffle develop環境
+- ビルド & デプロイ
+
 ```
 $ npm install
 $ truffle develop
@@ -43,3 +45,22 @@ truffle(develop)> web3.eth.getBalance(accounts[0])
 ```
 
 ### Kovanテストネットワーク環境
+Infura経由でKovanに接続するので、予めInfuraでプロジェクトを作っておくこと。また、接続予定のアカウントにイーサを入金しておくこと
+
+- ビルド & デプロイ
+
+```
+$ npm install
+$ cp .env.sample .env
+$ vim .env // 適宜
+$ truffle console --network kovan
+truffle(kovan)>  migrate
+```
+
+- オラクルを使ったトランザクション
+  - BuyEthUsdを捕捉して、ETH/USDのレートを得られた (得られた値の単位は謎...1セント辺りのgwei??)
+```
+truffle(kovan)> b.buyLatestEthUsd().then(res => console.log(res.logs[1].event, res.logs[1].args[1].toString(10)))
+BuyEthUsd 39217000000
+undefined
+```

@@ -82,7 +82,7 @@ module.exports = {
       },
       network_id: 42,
       gas: 5000000,
-      gasPrice: 1000000000
+      gasPrice: 2000000000
     }
   },
 
@@ -104,5 +104,5 @@ module.exports = {
       //  evmVersion: "byzantium"
       // }
     },
-  },
+  }
 };
